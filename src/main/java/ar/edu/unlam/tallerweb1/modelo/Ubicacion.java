@@ -14,6 +14,12 @@ public class Ubicacion {
 	private Long latitud;
 	private Long longitud;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public Long getLatitud() {
 		return latitud;
 	}
@@ -26,6 +32,5 @@ public class Ubicacion {
 	public void setLongitud(Long longitud) {
 		this.longitud = longitud;
 	}
-	
 
 }

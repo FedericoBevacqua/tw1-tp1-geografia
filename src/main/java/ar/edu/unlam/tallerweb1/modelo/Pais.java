@@ -21,6 +21,54 @@ public class Pais {
 	//ManyToOne O OneToMany
 	@ManyToOne
 	private Continente continente;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Long getHabitantes() {
+		return habitantes;
+	}
+
+	public void setHabitantes(Long habitantes) {
+		this.habitantes = habitantes;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+
+	public String getCapital() {
+		return capital;
+	}
+
+	public void setCapital(String capital) {
+		this.capital = capital;
+	}
+
+	public Continente getContinente() {
+		return continente;
+	}
+
+	public void setContinente(Continente continente) {
+		this.continente = continente;
+	}
 	
 
 }
