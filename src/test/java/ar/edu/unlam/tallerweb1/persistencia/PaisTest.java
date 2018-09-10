@@ -2,7 +2,10 @@ package ar.edu.unlam.tallerweb1.persistencia;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +14,9 @@ import ar.edu.unlam.tallerweb1.modelo.Ciudad;
 import ar.edu.unlam.tallerweb1.modelo.Continente;
 import ar.edu.unlam.tallerweb1.modelo.Pais;
 import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
+import ar.edu.unlam.tallerweb1.SpringTest;
 
-public class PaisTest {
+public class PaisTest extends SpringTest {
 
 	@Test @Transactional @Rollback //Test 1- Hacer con junit un test que busque todos los países de habla inglesa.
 	public void testBusquePaisesHablaInglesa() {
@@ -24,7 +28,7 @@ public class PaisTest {
 		//Inicializamos
 		pais1= new Pais();
 		pais2= new Pais();
-		session=null;
+		session = getSession();
 		
 		//Settear
 		pais1.setNombre("Argentina");
@@ -35,6 +39,15 @@ public class PaisTest {
 		//Guardar
 		session.save(pais1);
 		session.save(pais2);
+		
+		List<Pais> resultado;
+		resultado = session
+				.createCriteria(Pais.class)
+				.add(Restrictions.eq("idioma", "Ingles"))
+				.list();
+		
+		assertTrue(resultado.size() == 1);
+		
 
 	}
 	
@@ -51,7 +64,7 @@ public class PaisTest {
 		pais2= new Pais();
 		continente1= new Continente();
 		continente2= new Continente();
-		session=null;
+		session = getSession();
 				
 		//Settear
 		continente1.setNombre("America");
@@ -87,7 +100,7 @@ public class PaisTest {
 		ciudad2= new Ciudad();
 		ubicacion1= new Ubicacion();
 		ubicacion2= new Ubicacion();
-		session=null;
+		session = getSession();
 		
 		//Settear
 		pais1.setNombre("Canada");
