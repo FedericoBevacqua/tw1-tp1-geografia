@@ -80,7 +80,7 @@ public class CiudadTest extends SpringTest {
 				.createCriteria(Ciudad.class)
 				.createAlias("ubicacionGeografica", "ubi")
 				.add(Restrictions.le("ubi.latitud", 0))
-				.add(Restrictions.ge("ubi.latitud", -180))
+				.add(Restrictions.ge("ubi.latitud", -90))
 				.list();
 
 		assertTrue(resultado.size() == 1);
