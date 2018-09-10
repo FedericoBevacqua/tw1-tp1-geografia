@@ -48,7 +48,6 @@ public class PaisTest extends SpringTest {
 		
 		assertTrue(resultado.size() == 1);
 		
-
 	}
 	
 	@Test @Transactional @Rollback //Test 2- Hacer con junit un test que busque todos los países del continente europeo.
@@ -80,6 +79,14 @@ public class PaisTest extends SpringTest {
 		session.save(continente1);
 		session.save(continente2);
 		
+		List<Pais> resultado;
+		resultado = session
+				.createCriteria(Pais.class)
+				.createAlias("continente", "cont")
+				.add(Restrictions.eq("cont.nombre", "Europa"))
+				.list();
+		
+		assertTrue(resultado.size() == 1);
 		
 	}
 
